@@ -29,7 +29,7 @@ const Register = () => {
             setName("");
             setPassword("");
               setTimeout(() => {
-                navigate('/login'); 
+                navigate('/createProfile'); 
              }, 1000); 
         }
     }catch(err){
@@ -42,21 +42,70 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("")
   return (
-    <>
-    <form method='post' onSubmit={submitHandler} action="">
-    <label htmlFor="">
-        Name: <input type="text" onChange={(e)=>{setName(e.target.value)}} value={name} />
-    </label>
-     <label htmlFor="">
-        Email: <input type="email" onChange={(e)=>{setEmail(e.target.value)}} value={email} />
-    </label>
-     <label htmlFor="">
-        Password: <input type="password" onChange={(e)=>{setPassword(e.target.value)}} value={password} />
-    </label>
-    <button type="submit">Submit</button>
-    </form>
-    {message && <p>{message}</p>}
-    </>
+  <>
+  <form
+    onSubmit={submitHandler}
+    className="max-w-md mx-auto p-6 bg-white rounded-2xl shadow-md mt-10 space-y-5"
+  >
+    <h2 className="text-2xl font-semibold text-center text-indigo-600">Register</h2>
+
+    <div>
+      <label className="block text-sm font-medium text-indigo-700 mb-1">
+        Name
+      </label>
+      <input
+        type="text"
+        onChange={(e) => setName(e.target.value)}
+        value={name}
+        placeholder="John Doe"
+        className="w-full px-4 py-2 border border-indigo-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 bg-indigo-50 text-indigo-900"
+        required
+      />
+    </div>
+
+    <div>
+      <label className="block text-sm font-medium text-indigo-700 mb-1">
+        Email
+      </label>
+      <input
+        type="email"
+        onChange={(e) => setEmail(e.target.value)}
+        value={email}
+        placeholder="john@example.com"
+        className="w-full px-4 py-2 border border-indigo-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 bg-indigo-50 text-indigo-900"
+        required
+      />
+    </div>
+
+    <div>
+      <label className="block text-sm font-medium text-indigo-700 mb-1">
+        Password
+      </label>
+      <input
+        type="password"
+        onChange={(e) => setPassword(e.target.value)}
+        value={password}
+        placeholder="••••••••"
+        className="w-full px-4 py-2 border border-indigo-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 bg-indigo-50 text-indigo-900"
+        required
+      />
+    </div>
+
+    <button
+      type="submit"
+      className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-xl transition duration-300"
+    >
+      Submit
+    </button>
+  </form>
+
+  {message && (
+    <p className="text-center text-sm mt-4 text-red-600 font-medium">
+      {message}
+    </p>
+  )}
+</>
+
   )
 }
 
