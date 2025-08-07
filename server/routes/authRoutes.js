@@ -89,7 +89,48 @@ router.get("/profile",isLoggedIn, async function(req,res){
 }
 })
 
-// Create a post (protected)
+router.post("/posts", isLoggedIn, async (req, res) => {
+  const { content } = req.body;
+  if (!content) return res.status(400).json({ message: "Content is required" });
+console.log("req id",  req.user);
+
+  try {
+    const newPost = new Post({
+      user: req.user.id, // assuming user id is added by middleware
+      content,
+    });
+    const savedPost=await newPost.save();
+    res.status(201).json(savedPost);
+  } catch (err) {
+    console.error("Error creating post", err);
+    
+    res.status(500).json({ message: "Error creating post",err});
+  }
+});
+
+
+router.get("/myposts", isLoggedIn, async (req, res) => {
+  try {
+    const posts = await Post.find({ user: req.user.id }).sort({ createdAt: -1 });
+    res.json(posts);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching posts" });
+  }
+});
+// GET /auth/publicfeed — get all posts by all users
+router.get("/publicfeed", async (req, res) => {
+  try {
+    const posts = await Post.find({})
+      .populate("user", "fullName") // Only get fullName from user
+      .sort({ createdAt: -1 }); // Newest first
+
+    res.json(posts);
+  } catch (err) {
+    console.error("Error in publicfeed route:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 
 
 

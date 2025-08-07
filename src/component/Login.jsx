@@ -24,7 +24,7 @@ const Login = () => {
       if (response.ok) {
         setMessage("Login successful!");
         setTimeout(() => {
-          navigate("/profile");
+          navigate("/dashboard");
         }, 1000);
       } else {
         setMessage(data?.message || "Login failed. Please try again.");
