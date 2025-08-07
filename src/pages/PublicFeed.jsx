@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Navbar from "../component/Navbar";
 
 const PublicFeed = () => {
   const [posts, setPosts] = useState([]);
@@ -18,6 +19,8 @@ const PublicFeed = () => {
   }, []);
 
   return (
+    <>
+    <Navbar/>
     <div className="max-w-3xl mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4 text-indigo-700">🌍 Public Feed</h1>
 
@@ -37,6 +40,7 @@ const PublicFeed = () => {
         ))
       )}
     </div>
+    </>
   );
 };
 

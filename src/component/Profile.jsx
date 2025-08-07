@@ -69,12 +69,12 @@ function Profile() {
     <>
     <Navbar />
     <div className="text-right mb-4">
-  <button
+  {/* <button
     onClick={() => navigate("/createpost")}
     className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-xl"
   >
     Create Post
-  </button>
+  </button> */}
 </div>
 
     <div className="max-w-3xl mx-auto my-8 p-4">

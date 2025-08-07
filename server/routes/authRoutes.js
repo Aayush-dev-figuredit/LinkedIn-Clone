@@ -10,6 +10,10 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
   res.status(401).json({ message: "Unauthorized" });
 }
+router.get("/check", isLoggedIn, (req, res) => {
+  res.status(200).json({ loggedIn: true });
+});
+
 
 router.post("/register",async function(req,res,next){
     try{
