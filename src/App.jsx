@@ -1,6 +1,6 @@
 import React from 'react'
 import Login from './component/Login'
-import Register from './component/register'
+import Register from './component/Register'
 import Profile from './component/Profile'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import CreateProfile from './pages/CreateProfile'
