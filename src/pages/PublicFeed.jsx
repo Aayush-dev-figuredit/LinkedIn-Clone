@@ -30,7 +30,7 @@ const PublicFeed = () => {
           <div key={post._id} className="bg-white rounded-xl p-4 shadow mb-4">
             <p>{post.content}</p>
             <p className="text-sm text-gray-500 mt-2">
-              by <strong>{post.user?.fullName || "Unknown"}</strong> on{" "}
+              by <strong>{post.user.name || "Unknown"}</strong> on{" "}
               {new Date(post.createdAt).toLocaleString()}
             </p>
           </div>

@@ -121,7 +121,7 @@ router.get("/myposts", isLoggedIn, async (req, res) => {
 router.get("/publicfeed", async (req, res) => {
   try {
     const posts = await Post.find({})
-      .populate("user", "fullName") // Only get fullName from user
+      .populate("user", "name") // Only get fullName from user
       .sort({ createdAt: -1 }); // Newest first
 
     res.json(posts);
